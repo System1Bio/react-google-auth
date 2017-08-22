@@ -35,6 +35,7 @@ function SignIn(props) {
     }
     return <div>
         <button className="Button Button-primary" onClick={props.onSignInClick}>Sign in</button>
+        {props.signingIn && <div>Signing in...</div>}
     </div>;
 }
 

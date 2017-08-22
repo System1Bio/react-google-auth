@@ -14,7 +14,9 @@ const GoogleAuthExport = (config) => (Component) => {
             this.state = {
                 isSignedIn: false,
                 initializing: false,
-                error: null
+                error: null,
+                signingIn: false,
+                signingOut: false
             };
 
             this.handleSignInClick = this.handleSignInClick.bind(this);
@@ -53,16 +55,24 @@ const GoogleAuthExport = (config) => (Component) => {
         }
 
         handleSignInClick() {
+            this.setState({
+                signingIn: true
+            });
             gapi.auth2.getAuthInstance().signIn();
         }
 
         handleSignOutClick() {
+            this.setState({
+                signingOut: true
+            });
             gapi.auth2.getAuthInstance().signOut();
         }
 
         updateSignInStatus(isSignedIn) {
             this.setState({
-                isSignedIn
+                isSignedIn,
+                signingIn: false,
+                signingOut: false
             });
         }
 
@@ -70,7 +80,9 @@ const GoogleAuthExport = (config) => (Component) => {
             const {
                 initializing,
                 isSignedIn,
-                error
+                error,
+                signingIn,
+                signingOut
             } = this.state;
 
             if(!isSignedIn) {
@@ -79,12 +91,14 @@ const GoogleAuthExport = (config) => (Component) => {
                     onSignInClick={this.handleSignInClick}
                     initializing={initializing}
                     error={error}
+                    signingIn={signingIn}
                 />;
             }
 
             return <Component
                 {...this.props}
                 onSignOutClick={this.handleSignOutClick}
+                signingOut={signingOut}
             />;
         }
     }

@@ -18146,6 +18146,11 @@
 	            'button',
 	            { className: 'Button Button-primary', onClick: props.onSignInClick },
 	            'Sign in'
+	        ),
+	        props.signingIn && _react2.default.createElement(
+	            'div',
+	            null,
+	            'Signing in...'
 	        )
 	    );
 	}
@@ -37167,7 +37172,9 @@
 	                _this.state = {
 	                    isSignedIn: false,
 	                    initializing: false,
-	                    error: null
+	                    error: null,
+	                    signingIn: false,
+	                    signingOut: false
 	                };
 
 	                _this.handleSignInClick = _this.handleSignInClick.bind(_this);
@@ -37209,18 +37216,26 @@
 	            }, {
 	                key: 'handleSignInClick',
 	                value: function handleSignInClick() {
+	                    this.setState({
+	                        signingIn: true
+	                    });
 	                    gapi.auth2.getAuthInstance().signIn();
 	                }
 	            }, {
 	                key: 'handleSignOutClick',
 	                value: function handleSignOutClick() {
+	                    this.setState({
+	                        signingOut: true
+	                    });
 	                    gapi.auth2.getAuthInstance().signOut();
 	                }
 	            }, {
 	                key: 'updateSignInStatus',
 	                value: function updateSignInStatus(isSignedIn) {
 	                    this.setState({
-	                        isSignedIn: isSignedIn
+	                        isSignedIn: isSignedIn,
+	                        signingIn: false,
+	                        signingOut: false
 	                    });
 	                }
 	            }, {
@@ -37229,19 +37244,23 @@
 	                    var _state = this.state,
 	                        initializing = _state.initializing,
 	                        isSignedIn = _state.isSignedIn,
-	                        error = _state.error;
+	                        error = _state.error,
+	                        signingIn = _state.signingIn,
+	                        signingOut = _state.signingOut;
 
 
 	                    if (!isSignedIn) {
 	                        return _react2.default.createElement(SignIn, _extends({}, this.props, {
 	                            onSignInClick: this.handleSignInClick,
 	                            initializing: initializing,
-	                            error: error
+	                            error: error,
+	                            signingIn: signingIn
 	                        }));
 	                    }
 
 	                    return _react2.default.createElement(Component, _extends({}, this.props, {
-	                        onSignOutClick: this.handleSignOutClick
+	                        onSignOutClick: this.handleSignOutClick,
+	                        signingOut: signingOut
 	                    }));
 	                }
 	            }]);
@@ -37294,7 +37313,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-	exports.GoogleAuthHock = exports.CallbackLoaderHock = exports.ScriptLoaderHock = undefined;
+	exports.Compose = exports.GoogleAuthHock = exports.CallbackLoaderHock = exports.ScriptLoaderHock = undefined;
 
 	var _react = __webpack_require__(2);
 
@@ -37360,6 +37379,7 @@
 	exports.ScriptLoaderHock = _ScriptLoaderHock2.default;
 	exports.CallbackLoaderHock = _CallbackLoaderHock2.default;
 	exports.GoogleAuthHock = _GoogleAuthHock2.default;
+	exports.Compose = _Compose2.default;
 
 /***/ }),
 /* 349 */

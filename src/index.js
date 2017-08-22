@@ -34,5 +34,6 @@ export default (config) => {
 export {
     ScriptLoaderHock,
     CallbackLoaderHock,
-    GoogleAuthHock
+    GoogleAuthHock,
+    Compose
 }

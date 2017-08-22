@@ -1,0 +1,15 @@
+{
+  "generator-bigdatr-startr": {
+    "promptValues": {
+      "name": "react-google-auth",
+      "description": "Simple higher order component to load google js api, show login and handle sign in and sign out",
+      "version": "0.0.0",
+      "license": "MIT",
+      "private": false,
+      "author": "Damien Clarke",
+      "username": "dxinteractive",
+      "nameConstant": "REACT_GOOGLE_AUTH",
+      "example": true
+    }
+  }
+}

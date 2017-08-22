@@ -1,37 +1,24 @@
-# react-google-auth
-
-Simple higher order component to load google js api, show login and handle sign in and sign out.
-
-
-## Install
-
-`yarn add react-google-auth` or `npm install react-google-auth`
-
-
-## Example
-
-```js
 import React from 'react';
 import ReactGoogleAuth from 'react-google-auth';
 
 function Example(props) {
     console.log("gapi exists", gapi);
     return <div>
-        <h1>App goes here</h1>
-        <button onClick={props.onSignOutClick}>Sign out</button>
+        <h1 className="Text Text-alpha marginBottom2">App goes here</h1>
+        <button className="Button Button-primary" onClick={props.onSignOutClick}>Sign out</button>
     </div>;
 }
 
 function Loader(props) {
-    return <div>Loading...</div>;
+    return <div className="Text Text-emphasis">Loading...</div>;
 }
 
 function SignIn(props) {
     if(props.initializing) {
-        return <div>Initializing...</div>;
+        return <div className="Text Text-emphasis">Initializing...</div>;
     }
     return <div>
-        <button onClick={props.onSignInClick}>Sign in</button>
+        <button className="Button Button-primary" onClick={props.onSignInClick}>Sign in</button>
         {props.error && <p className="Text Text-failure">{props.error}</p>}
     </div>;
 }
@@ -43,5 +30,3 @@ export default ReactGoogleAuth({
     scope: "https://www.googleapis.com/auth/spreadsheets",
     signIn: SignIn
 })(Example);
-
-```

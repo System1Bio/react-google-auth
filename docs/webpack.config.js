@@ -75,7 +75,7 @@ const production = Object.assign({}, development, {
     cache: false,
     plugins: [
         new ExtractTextPlugin('style.css'),
-        new webpack.optimize.UglifyJsPlugin(),
+        //new webpack.optimize.UglifyJsPlugin(),
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.optimize.DedupePlugin()
     ].concat(development.plugins),

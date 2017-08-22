@@ -7,7 +7,6 @@ Simple higher order component to load google js api, show login and handle sign 
 
 `yarn add react-google-auth` or `npm install react-google-auth`
 
-
 ## Example
 
 ```js
@@ -48,3 +47,7 @@ export default ReactGoogleAuth({
 })(Example);
 
 ```
+
+## Demo
+
+[Go here](https://dxinteractive.github.io/react-google-auth/)

@@ -17,9 +17,12 @@ function SignIn(props) {
     if(props.initializing) {
         return <div className="Text Text-emphasis">Initializing...</div>;
     }
+    if(props.error) {
+        console.log('Error', props.error);
+        return <div className="Text Text-strong">Error!</div>;
+    }
     return <div>
         <button className="Button Button-primary" onClick={props.onSignInClick}>Sign in</button>
-        {props.error && <p className="Text Text-failure">{props.error}</p>}
     </div>;
 }
 

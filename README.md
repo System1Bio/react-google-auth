@@ -28,11 +28,14 @@ function Loader(props) {
 
 function SignIn(props) {
     if(props.initializing) {
-        return <div>Initializing...</div>;
+        return <div className="Text Text-emphasis">Initializing...</div>;
+    }
+    if(props.error) {
+        console.log('Error', props.error);
+        return <div className="Text Text-strong">Error!</div>;
     }
     return <div>
-        <button onClick={props.onSignInClick}>Sign in</button>
-        {props.error && <p className="Text Text-failure">{props.error}</p>}
+        <button className="Button Button-primary" onClick={props.onSignInClick}>Sign in</button>
     </div>;
 }
 

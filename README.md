@@ -1,6 +1,7 @@
 # react-google-auth
 
 Simple higher order component to load google js api, show login and handle sign in and sign out.
+The `gapi` object becomes available as a global as per normal Google's Javascript API behaviour.
 
 
 ## Install

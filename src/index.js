@@ -1,8 +1,13 @@
 import React from 'react';
 import ScriptLoaderHock from './ScriptLoaderHock';
-import CallbackLoaderHock from './CallbackLoaderHock';
+import AsyncLoaderHock from './AsyncLoaderHock';
 import GoogleAuthHock from './GoogleAuthHock';
 import Compose from './Compose';
+import {
+    GetAuthInstance,
+    GetCurrentUser,
+    GetCurrentAuthResponse
+} from './Utils';
 
 export default (config) => {
     const {
@@ -18,8 +23,8 @@ export default (config) => {
             scripts: ['https://apis.google.com/js/api.js'],
             loader
         }),
-        CallbackLoaderHock({
-            load: (callback) => gapi.load('client:auth2', callback),
+        AsyncLoaderHock({
+            callbackOnMount: (onComplete) => gapi.load('client:auth2', onComplete),
             loader
         }),
         GoogleAuthHock({
@@ -33,7 +38,10 @@ export default (config) => {
 
 export {
     ScriptLoaderHock,
-    CallbackLoaderHock,
+    AsyncLoaderHock,
     GoogleAuthHock,
-    Compose
+    Compose,
+    GetAuthInstance,
+    GetCurrentUser,
+    GetCurrentAuthResponse
 }

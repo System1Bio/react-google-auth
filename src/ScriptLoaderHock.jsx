@@ -1,5 +1,5 @@
 import React from 'react';
-import {Compose} from 'stampy';
+import Compose from './Compose';
 import scriptLoader from 'react-async-script-loader';
 
 export default ({scripts, loader: Loader}) => Compose(
